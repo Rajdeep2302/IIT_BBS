@@ -1,51 +1,59 @@
-<div class=" h-10 bg-neutral-500 flex flex-wrap flex-row justify-between " style=' font-family: "Caveat", cursive;'>
+<div class="bg-blue-900 text-white p-6" style='font-family: "Caveat", cursive;'>
 
-    <!-- first -->
-    <div class=" bg-green-400 h-auto flex flex-wrap gap-4 w-screen justify-between p-4">
-        <div class=" flex flex-wrap flex-col gap-3">
-            <img src="./landing/incognito_learner.png" alt="Company Logo" class=" h-20 w-20">
-            <h1 class=" text-10  font-bold">During this era, of online learning Incognito Learning helps you to achive your goals</h1>
-            <div class=" flex flex-wrap flex-row gap-10">
-                <a href="" class=" h-10 bg-red-300 ww-[10px] p-3 justify-center items-center text-center rounded-3xl flex">Google Play</a>
-                <a href="" class=" h-10 bg-red-300 ww-[10px] p-3 justify-center items-center text-center rounded-3xl flex">App Store</a>
+    <!-- Main Footer Section -->
+    <div class="flex flex-wrap justify-between items-start gap-6">
+
+        <!-- First Section: Logo & Description -->
+        <div class="flex flex-col gap-3 max-w-xs">
+            <img src="./landing/incognito_learner.png" alt="Company Logo" class="h-20 w-20">
+            <h1 class="text-lg font-bold">
+                During this era of online learning, Incognito Learning helps you achieve your goals.
+            </h1>
+            <div class="flex gap-4">
+                <a href="#" class="bg-white text-blue-900 px-4 py-2 rounded-md hover:bg-gray-300">Google Play</a>
+                <a href="#" class="bg-white text-blue-900 px-4 py-2 rounded-md hover:bg-gray-300">App Store</a>
             </div>
         </div>
 
-        <!-- second -->
-        <div class="flex flex-wrap flex-col">
-            <h1>About</h1>
-            <a href="">home</a><a href="">Students</a><a href="">Teachers</a><a href="">Contact Us</a>
+        <!-- Second Section: About Links -->
+        <div class="flex flex-col">
+            <h1 class="text-xl font-semibold mb-2">About</h1>
+            <a href="#" class="hover:text-gray-300">Home</a>
+            <a href="#" class="hover:text-gray-300">Students</a>
+            <a href="#" class="hover:text-gray-300">Teachers</a>
+            <a href="#" class="hover:text-gray-300">Contact Us</a>
         </div>
-        <div class=" flex flex-wrap flex-col"><h1>
-            Usefull Links
-        </h1>
-        <a href="">Home </a><a href="">Course</a><a href="">Teachers</a><a href="">Contact Us</a>
+
+        <!-- Third Section: Useful Links -->
+        <div class="flex flex-col">
+            <h1 class="text-xl font-semibold mb-2">Useful Links</h1>
+            <a href="#" class="hover:text-gray-300">Home</a>
+            <a href="#" class="hover:text-gray-300">Courses</a>
+            <a href="#" class="hover:text-gray-300">Teachers</a>
+            <a href="#" class="hover:text-gray-300">Contact Us</a>
+        </div>
+
+        <!-- Fourth Section: Newsletter Subscription -->
+        <div class="flex flex-col gap-4">
+            <h1 class="text-xl font-semibold">Sign Up for Our Newsletter</h1>
+            <h3 class="text-sm text-gray-300">
+                Stay updated with the latest trends in online learning.
+            </h3>
+            <div class="relative w-64">
+                <input type="text" placeholder="Your Email" 
+                    class="h-10 w-full pl-3 pr-16 rounded-md bg-white text-black focus:outline-none"
+                >
+                <button class="absolute right-0 top-0 h-10 px-3 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                    Subscribe
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- third -->
-        <div class=" flex flex-wrap flex-col gap-4">
-
-        <h1>SignUp for Our NewsSettle</h1>
-        <h3> During this era the online learing is pectedly increased.</h3>
-        <div class="relative w-64">
-    <input 
-        type="text" 
-        placeholder="Your Email" 
-        class="h-10 w-full pl-3 pr-16 rounded-md bg-slate-200 text-black focus:outline-none"
-    >
-    <button 
-        class="absolute right-0 top-0 h-10 px-3 bg-green-500 text-white rounded-md hover:bg-green-800"
-    >
-        Subscribe
-    </button>
-</div>
-
-        
-        </div>
-    </div>
-    <!-- fourth -->
-    <div class=" justify-between bg-green-700  text-white flex flex-wrap flex-row w-screen h-10 items-center text-center    ">
+    <!-- Footer Bottom Bar -->
+    <div class="mt-6 bg-blue-700 text-white flex flex-wrap justify-between items-center text-center p-3">
         <h1>Privacy Policy | Terms & Conditions</h1>
         <h1>Copyright © by Incognito Learning</h1>
     </div>
+
 </div>

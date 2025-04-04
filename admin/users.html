@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-blue-900 text-white p-5">
+            <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+            <ul>
+                <li class="mb-4"><a href="index.php" class="block py-2 px-3 rounded hover:bg-blue-700">Dashboard</a></li>
+                <li class="mb-4"><a href="users.html" class="block py-2 px-3 rounded hover:bg-blue-700">Users</a></li>
+                <li class="mb-4"><a href="courses.html" class="block py-2 px-3 rounded hover:bg-blue-700">Courses</a></li>
+                <li class="mb-4"><a href="reports.html" class="block py-2 px-3 rounded hover:bg-blue-700">Reports</a></li>
+                <li class="mb-4"><a href="announcements.html" class="block py-2 px-3 rounded hover:bg-blue-700">Announcements</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <h1 class="text-3xl font-semibold text-blue-900">Users Management</h1>
+            <div class="mt-6 bg-white p-4 rounded-lg shadow">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-blue-700 text-white">
+                            <th class="py-2 px-4">Name</th>
+                            <th class="py-2 px-4">Email</th>
+                            <th class="py-2 px-4">Role</th>
+                            <th class="py-2 px-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="py-2 px-4">John Doe</td>
+                            <td class="py-2 px-4">john@example.com</td>
+                            <td class="py-2 px-4">Student</td>
+                            <td class="py-2 px-4">
+                                <button class="bg-red-500 text-white px-2 py-1 rounded">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
