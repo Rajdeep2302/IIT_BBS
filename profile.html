@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
+
+    <div class="max-w-3xl w-full bg-white p-8 rounded-lg shadow-lg">
+        
+        <!-- Student Information -->
+        <h2 class="text-3xl font-bold text-blue-600 text-center mb-4">Student Information</h2>
+        <div class="bg-gray-200 p-4 rounded-md">
+            <p class="text-lg"><strong>Name:</strong> <span id="studentName">John Doe</span></p>
+            <p class="text-lg"><strong>ID:</strong> <span id="studentId">STU123456</span></p>
+            <p class="text-lg"><strong>Email:</strong> <span id="studentEmail">john.doe@example.com</span></p>
+            <p class="text-lg"><strong>Mobile:</strong> <span id="studentMobile">+91 9876543210</span></p>
+        </div>
+
+        <!-- Enrolled Courses Table -->
+        <h3 class="text-2xl font-semibold text-gray-700 mt-6">Enrolled Courses</h3>
+        <div class="mt-4 overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-300 px-4 py-2 text-left">Course Name</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Instructor</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Duration</th>
+                    </tr>
+                </thead>
+                <tbody id="courseTable">
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Web Development</td>
+                        <td class="border border-gray-300 px-4 py-2">Dr. Smith</td>
+                        <td class="border border-gray-300 px-4 py-2">3 Months</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Data Science</td>
+                        <td class="border border-gray-300 px-4 py-2">Dr. Johnson</td>
+                        <td class="border border-gray-300 px-4 py-2">4 Months</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Machine Learning</td>
+                        <td class="border border-gray-300 px-4 py-2">Dr. Adams</td>
+                        <td class="border border-gray-300 px-4 py-2">5 Months</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

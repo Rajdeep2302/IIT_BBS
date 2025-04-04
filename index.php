@@ -35,11 +35,9 @@
           </a>
           <nav class="hidden md:ml-6 md:flex md:space-x-8">
             <a href="#" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-blue-500 text-sm font-medium">Dashboard</a>
-            <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">My Courses</a>
-            <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Assignments</a>
-            <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Grades</a>
-            <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Profile</a>
-            <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Downloads</a>
+            <a href="./mycourses.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">My Courses</a>
+            <a href="./assign.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Assignments</a>
+            <a href="./profile.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Profile</a>
             <a href="#contact" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Contact Us</a>
           </nav>
         </div>
@@ -64,13 +62,20 @@
           <!-- Course Card -->
           <div class="bg-white p-4 rounded-lg shadow-md">
             <img src="./image/portal1.jpg" alt="Course Image" class="w-full h-32 object-cover rounded-md">
-            <h3 class="text-xl font-semibold mt-4 text-blue-600">Course Title</h3>
+            <h3 class="text-xl font-semibold mt-4 text-blue-600">Web Development</h3>
             <p class="mt-2 text-gray-600">Next Assignment Due: <span class="font-bold">April 10, 2025</span></p>
-            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">View Course</button>
+            <button onclick="window.location.href='course.html'"
+              class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+              View Course
+            </button>
           </div>
-          <!-- Repeat for other courses -->
+
+          <!-- You can duplicate this div for more courses -->
         </div>
       </div>
+
+
+
 
       <!-- View Other Courses Section -->
       <div class="mt-10">
@@ -275,6 +280,57 @@
       <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Review</button>
     </div>
   </div>
+
+  <div class="mt-10 w-screen flex justify-center items-center">
+    <div id="contact" class="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg">
+
+      <h2 class="text-3xl font-bold text-blue-600 text-center mb-4">Contact Us</h2>
+
+      <!-- Contact Information -->
+      <div class="bg-gray-200 p-4 rounded-md">
+        <p class="text-lg"><strong>📞 Mobile:</strong> <span id="mobileNumber">+91 98765 43210</span>
+          <button onclick="copyToClipboard('mobileNumber')" class="ml-2 bg-blue-500 text-white px-2 py-1 text-sm rounded hover:bg-blue-700">Copy</button>
+        </p>
+        <p class="text-lg"><strong>📧 Email:</strong> <span id="email">contact@example.com</span>
+          <button onclick="copyToClipboard('email')" class="ml-2 bg-blue-500 text-white px-2 py-1 text-sm rounded hover:bg-blue-700">Copy</button>
+        </p>
+        <p class="text-lg"><strong>📍 Address:</strong> 123, MG Road, Kolkata, India</p>
+        <p class="text-lg"><strong>⏰ Working Hours:</strong> Mon-Fri, 9 AM - 6 PM</p>
+      </div>
+
+      <!-- Contact Form -->
+      <h3 class="text-2xl font-semibold text-gray-700 mt-6">Send a Message</h3>
+      <div class="mt-4">
+        <input id="name" type="text" placeholder="Your Name" class="border p-2 rounded w-full mb-2">
+        <input id="emailInput" type="email" placeholder="Your Email" class="border p-2 rounded w-full mb-2">
+        <textarea id="message" placeholder="Your Message" class="border p-2 rounded w-full mb-2"></textarea>
+        <button onclick="sendMessage()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full">Send Message</button>
+      </div>
+    </div>
+  </div>
+  <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text);
+            alert(id.replace("Number", " Number").replace("email", "Email") + " copied to clipboard!");
+        }
+
+        function sendMessage() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("emailInput").value;
+            const message = document.getElementById("message").value;
+
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill all fields before sending your message.");
+                return;
+            }
+
+            alert("Message sent successfully! We will get back to you soon.");
+            document.getElementById("name").value = "";
+            document.getElementById("emailInput").value = "";
+            document.getElementById("message").value = "";
+        }
+    </script> 
 
   </div> <!-- End of Main Content -->
   </main>
