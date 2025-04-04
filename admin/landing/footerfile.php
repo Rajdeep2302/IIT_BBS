@@ -1,9 +1,9 @@
 <div class=" h-10 bg-neutral-500 flex flex-wrap flex-row justify-between " style=' font-family: "Caveat", cursive;'>
 
     <!-- first -->
-    <div class=" bg-green-400 h-auto flex flex-wrap gap-4 w-screen justify-between  ">
+    <div class=" bg-green-400 h-auto flex flex-wrap gap-4 w-screen justify-between p-4">
         <div class=" flex flex-wrap flex-col gap-3">
-            <img src="" alt="Company Logo" class=" h-5 w-5">
+            <img src="./landing/incognito_learner.png" alt="Company Logo" class=" h-20 w-20">
             <h1 class=" text-10  font-bold">During this era, of online learning Incognito Helps you to achive your goals</h1>
             <div class=" flex flex-wrap flex-row gap-10">
                 <a href="" class=" h-10 bg-red-300 ww-[10px] p-3 justify-center items-center text-center rounded-3xl flex">Google Play</a>
@@ -23,15 +23,10 @@
     </div>
 
     <!-- third -->
-        <div>
+        <div class=" flex flex-wrap flex-col gap-4">
 
         <h1>SignUp for Our NewsSettle</h1>
         <h3> During this era the online learing is pectedly increased.</h3>
-        <!-- <div class=" relative">
-        <input type="text" placeholder="Your Email" class=" h-7 rounded-l bg-slate-400">
-        <button> Subscribe</button>
-
-        </div> -->
         <div class="relative w-64">
     <input 
         type="text" 

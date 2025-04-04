@@ -25,6 +25,7 @@
     <?php
     include "./landing/headerfile.php"
     ?>
+    
     <?php
     include "./landing/footerfile.php"
     ?>

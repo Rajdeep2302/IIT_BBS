@@ -4,8 +4,8 @@
 <div id="header" style='font-family: "Vast Shadow", serif;' class=" h-[70px]  bg-[#028090] flex flex-wrap flex-row justify-between p-[10px] justify-items-center items-center  w-screen">
 
 
-    <div class="logo flex flex-wrap flex-row gap-4 items-center">
-        <a href="" class=" text-white text-[32px] bg-red-500">Logo</a>
+    <div class="logo flex flex-wrap flex-row gap-4 items-center h-15 w-20">
+    <img src="./landing/incognito_learner.png" alt="" class=" h-15" >
         
     </div>
     <div style='font-family: "Vast Shadow", serif;' class=" text-white flex gap-[20px] justify-center  text-center items-center font-bold text-[22px]" >
