@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Courses</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-100 min-h-screen p-6">
+<body class="bg-gray-100 min-h-screen ">
+<?php
+  include "./landing/header.php";
+  ?>
     <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold text-gray-800 mb-6">My Courses</h1>
 
@@ -32,6 +35,20 @@
                 instructor: "Dr. Jane Smith", 
                 progress: 50,
                 image: "./image/database.jpg"
+            },
+            { 
+                id: 3, 
+                name: "Web Development with JavaScript", 
+                instructor: "Mr. Alex Johnson", 
+                progress: 85,
+                image: "./image/portal1.jpg"
+            },
+            { 
+                id: 3, 
+                name: "Web Development with JavaScript", 
+                instructor: "Mr. Alex Johnson", 
+                progress: 85,
+                image: "./image/portal1.jpg"
             },
             { 
                 id: 3, 
@@ -78,5 +95,8 @@
         // Load courses when page loads
         document.addEventListener("DOMContentLoaded", loadCourses);
     </script>
+    <?php
+  include "./landing/footer.php";
+  ?>
 </body>
 </html>

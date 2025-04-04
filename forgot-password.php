@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - Quiz Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-2xl font-bold text-center text-blue-900">Forgot Password</h2>
+        <p class="text-gray-600 text-center mt-2">Enter your email to reset your password.</p>
+
+        <form id="forgotForm" class="mt-4">
+            <label class="block mb-2 text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="forgotEmail" class="w-full p-2 border rounded" placeholder="Enter your email" required>
+
+            <button type="submit" class="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                Send Reset Link
+            </button>
+        </form>
+
+        <div class="mt-4 text-center">
+            <a href="signin.php" class="text-blue-600 hover:underline">Back to Login</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("forgotForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let email = document.getElementById("forgotEmail").value.trim();
+
+            if (!email) {
+                alert("Please enter your email.");
+                return;
+            }
+
+            alert("Password reset link has been sent to " + email);
+            window.location.href = "login.html"; // Redirect back to login
+        });
+    </script>
+</body>
+</html>

@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Underdog&family=Vast+Shadow&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
@@ -23,57 +27,85 @@
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen flex flex-col">
-
-  <!-- Header -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex">
-          <a href="#" class="flex-shrink-0 flex items-center text-blue-600 text-2xl font-bold">
-            Student Portal
-          </a>
-          <nav class="hidden md:ml-6 md:flex md:space-x-8">
-            <a href="#" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-blue-500 text-sm font-medium">Dashboard</a>
-            <a href="./mycourses.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">My Courses</a>
-            <a href="./assign.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Assignments</a>
-            <a href="./profile.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Profile</a>
-            <a href="#contact" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Contact Us</a>
-          </nav>
-        </div>
-        <div class="flex items-center">
-          <a href="#" class="text-gray-500 hover:text-gray-700 text-sm font-medium">Logout</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
+<body class="bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen flex flex-col max-w-screen ">
+  <?php
+  include "./landing/header.php";
+  ?>
   <!-- Main Content -->
 
-  <main class="flex-1 overflow-y-auto p-10 ">
+  <main class="flex-1 overflow-y-auto p-10 mt-[71px]">
     <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h1 class="text-3xl font-semibold text-blue-600">Welcome, [Student Name]</h1>
-      <p class="mt-2 text-gray-600">Here's an overview of your recent activity.</p>
+    <?php 
+      if(!isset($_COOKIE['regid'])){
+        echo'
+        <h1 class="text-3xl font-semibold text-blue-600">Welcome to you</h1>
+        <p class="mt-2 text-gray-600">Here`s an overview of our recent activity.</p>
+        ';
+      } else {
+        echo'
+        <h1 class="text-3xl font-semibold text-blue-600">Welcome back, '.$_COOKIE['regid'].'</h1>
+        <p class="mt-2 text-gray-600">Here`s an overview of your recent activity.</p>
+        ';
+      }
+      ?>
 
       <!-- My Courses Section -->
-      <div class="mt-6">
-        <h2 class="text-2xl font-semibold text-blue-600">My Courses</h2>
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Course Card -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <img src="./image/portal1.jpg" alt="Course Image" class="w-full h-32 object-cover rounded-md">
-            <h3 class="text-xl font-semibold mt-4 text-blue-600">Web Development</h3>
-            <p class="mt-2 text-gray-600">Next Assignment Due: <span class="font-bold">April 10, 2025</span></p>
-            <button onclick="window.location.href='course.html'"
-              class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
-              View Course
-            </button>
+      <?php 
+      if(isset($_COOKIE['regid'])){
+        echo '
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold text-blue-600">My Courses</h2>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Course Card -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <img src="./image/portal1.jpg" alt="Course Image" class="w-full h-32 object-cover rounded-md">
+              <h3 class="text-xl font-semibold mt-4 text-blue-600">Web Development</h3>
+              <p class="mt-2 text-gray-600">Next Assignment Due: <span class="font-bold">April 10, 2025</span></p>
+              <button onclick="window.location.href=`course.php`"
+                class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                View Course
+              </button>
+            </div>
+            <!-- Course Card -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <img src="./image/portal1.jpg" alt="Course Image" class="w-full h-32 object-cover rounded-md">
+              <h3 class="text-xl font-semibold mt-4 text-blue-600">Web Development</h3>
+              <p class="mt-2 text-gray-600">Next Assignment Due: <span class="font-bold">April 10, 2025</span></p>
+              <button onclick="window.location.href=`course.php`"
+                class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                View Course
+              </button>
+            </div>
+            <!-- Course Card -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <img src="./image/portal1.jpg" alt="Course Image" class="w-full h-32 object-cover rounded-md">
+              <h3 class="text-xl font-semibold mt-4 text-blue-600">Web Development</h3>
+              <p class="mt-2 text-gray-600">Next Assignment Due: <span class="font-bold">April 10, 2025</span></p>
+              <button onclick="window.location.href=`course.php`"
+                class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                View Course
+              </button>
+            </div>
+  
+            <!-- You can duplicate this div for more courses -->
           </div>
-
-          <!-- You can duplicate this div for more courses -->
         </div>
-      </div>
+        ';
 
+      } ?>
+
+
+      <?php 
+      if(!isset($_COOKIE['regid'])){
+        echo '
+        <div class="mt-6">
+          <img src="./image/body_image.jpg" class="rounded-lg min-w-full h-[300px] md:h-[500px] xl:h-[700px] object-cover" alt="">
+          <!-- <div class="bg-[#25f] absolute top-0 mt-[500px] py-[10px] text-[20px] w-[150px] text-center text-white font-mono font-extrabold rounded-full">Login Now</div> -->
+        </div>
+        ';
+      }
+      ?>
+      <!-- Recent Activity Section -->
 
 
 
@@ -88,6 +120,21 @@
             <p class="mt-2 text-gray-600">Brief description of the course.</p>
             <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 explore-btn">Explore Course</button>
           </div>
+          <!-- Other Course Card -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <img src="./image/portal2.jpg" alt="Other Course Image" class="w-full h-32 object-cover rounded-md">
+            <h3 class="text-xl font-semibold mt-4 text-blue-600">Other Course Title</h3>
+            <p class="mt-2 text-gray-600">Brief description of the course.</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 explore-btn">Explore Course</button>
+          </div>
+          <!-- Other Course Card -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <img src="./image/portal2.jpg" alt="Other Course Image" class="w-full h-32 object-cover rounded-md">
+            <h3 class="text-xl font-semibold mt-4 text-blue-600">Other Course Title</h3>
+            <p class="mt-2 text-gray-600">Brief description of the course.</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 explore-btn">Explore Course</button>
+          </div>
+
         </div>
       </div>
 
@@ -169,24 +216,65 @@
               <p class="text-gray-600">Subject Expertise</p>
             </div>
           </div>
+           <!-- Teacher Card -->
+           <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+            <img src="./image/portal3.jpg" alt="Teacher Image" class="w-16 h-16 object-cover rounded-full">
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-blue-600">Teacher Name</h3>
+              <p class="text-gray-600">Subject Expertise</p>
+            </div>
+          </div>
+           <!-- Teacher Card -->
+           <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+            <img src="./image/portal3.jpg" alt="Teacher Image" class="w-16 h-16 object-cover rounded-full">
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-blue-600">Teacher Name</h3>
+              <p class="text-gray-600">Subject Expertise</p>
+            </div>
+          </div>
+           <!-- Teacher Card -->
+           <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+            <img src="./image/portal3.jpg" alt="Teacher Image" class="w-16 h-16 object-cover rounded-full">
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-blue-600">Teacher Name</h3>
+              <p class="text-gray-600">Subject Expertise</p>
+            </div>
+          </div>
+           <!-- Teacher Card -->
+           <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+            <img src="./image/portal3.jpg" alt="Teacher Image" class="w-16 h-16 object-cover rounded-full">
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-blue-600">Teacher Name</h3>
+              <p class="text-gray-600">Subject Expertise</p>
+            </div>
+          </div>
+           <!-- Teacher Card -->
+           <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+            <img src="./image/portal3.jpg" alt="Teacher Image" class="w-16 h-16 object-cover rounded-full">
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-blue-600">Teacher Name</h3>
+              <p class="text-gray-600">Subject Expertise</p>
+            </div>
+          </div>
+           <!-- Teacher Card -->
+           <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+            <img src="./image/portal3.jpg" alt="Teacher Image" class="w-16 h-16 object-cover rounded-full">
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-blue-600">Teacher Name</h3>
+              <p class="text-gray-600">Subject Expertise</p>
+            </div>
+          </div>
           <!-- Repeat for other teachers -->
         </div>
       </div>
     </div>
     <!-- Fun Facts Section -->
-    <section class="py-15 bg-white">
+    <section class="py-15 bg-white mt-10 rounded-xl">
       <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <!-- Left Content -->
         <div>
           <h2 class="text-3xl font-bold mb-4">"Education is the most powerful weapon which you can use to change the world."</h2>
           <div class="grid grid-cols-2 gap-4 mt-6">
-            <div class="flex items-center space-x-3">
-              <img src="https://img.icons8.com/ios-filled/50/000000/group.png" class="w-8 h-8" alt="Global Students Icon">
-              <div>
-                <h4 class="font-semibold">15,000+</h4>
-                <p class="text-gray-600 text-sm">Global Students</p>
-              </div>
-            </div>
             <div class="flex items-center space-x-3">
               <img src="https://img.icons8.com/ios-filled/50/000000/online.png" class="w-8 h-8" alt="Online Courses Icon">
               <div>
@@ -201,19 +289,12 @@
                 <p class="text-gray-600 text-sm">Classes Completed</p>
               </div>
             </div>
-            <div class="flex items-center space-x-3">
-              <img src="https://img.icons8.com/ios-filled/50/000000/globe.png" class="w-8 h-8" alt="Countries Icon">
-              <div>
-                <h4 class="font-semibold">50+</h4>
-                <p class="text-gray-600 text-sm">Countries</p>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Right Image -->
         <div>
-          <img src="https://via.placeholder.com/500x400" alt="Fun Facts Image" class="rounded-lg shadow-lg w-full object-cover">
+          <img src="./image/body_image.jpg" alt="Fun Facts Image" class="rounded-lg p-3 m-5 shadow-lg w-full object-cover">
         </div>
       </div>
     </section>
@@ -221,10 +302,10 @@
 
     <!-- Ask for Help Section -->
     <div class="mt-10">
-      <h2 class="text-2xl font-semibold text-blue-600">Ask for Help</h2>
+      <h2 class="text-2xl  text-blue-600 font-bold">Ask for Help</h2>
       <div class="mt-4">
         <label for="question" class="block text-lg text-gray-700 font-semibold">Have a question? Ask here:</label>
-        <textarea id="question" rows="3" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your question here..."></textarea>
+        <textarea id="question" rows="3" class="w-full p-3 border bg-slate-300 border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your question here..."></textarea>
         <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
       </div>
     </div>
@@ -253,7 +334,7 @@
 
   <!-- Footer -->
   <!-- Review Section -->
-  <div class="mt-10">
+  <div class="m-10">
     <h2 class="text-2xl font-semibold text-blue-600 text-center">Student Reviews</h2>
     <div class="mt-6 space-y-6">
       <!-- Review 1 -->
@@ -276,13 +357,13 @@
     <!-- Submit Review Section -->
     <div class="mt-8">
       <h3 class="text-xl font-semibold text-blue-600">Leave a Review</h3>
-      <textarea rows="3" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Share your experience..."></textarea>
+      <textarea rows="3" class="w-full p-3 border bg-slate-300 border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Share your experience..."></textarea>
       <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Review</button>
     </div>
   </div>
 
-  <div class="mt-10 w-screen flex justify-center items-center">
-    <div id="contact" class="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg">
+  <div class="mt-10 w-screen flex justify-center items-center ">
+    <div id="contact" class="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg ">
 
       <h2 class="text-3xl font-bold text-blue-600 text-center mb-4">Contact Us</h2>
 
@@ -309,40 +390,35 @@
     </div>
   </div>
   <script>
-        function copyToClipboard(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert(id.replace("Number", " Number").replace("email", "Email") + " copied to clipboard!");
-        }
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text);
+      alert(id.replace("Number", " Number").replace("email", "Email") + " copied to clipboard!");
+    }
 
-        function sendMessage() {
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("emailInput").value;
-            const message = document.getElementById("message").value;
+    function sendMessage() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("emailInput").value;
+      const message = document.getElementById("message").value;
 
-            if (name === "" || email === "" || message === "") {
-                alert("Please fill all fields before sending your message.");
-                return;
-            }
+      if (name === "" || email === "" || message === "") {
+        alert("Please fill all fields before sending your message.");
+        return;
+      }
 
-            alert("Message sent successfully! We will get back to you soon.");
-            document.getElementById("name").value = "";
-            document.getElementById("emailInput").value = "";
-            document.getElementById("message").value = "";
-        }
-    </script> 
+      alert("Message sent successfully! We will get back to you soon.");
+      document.getElementById("name").value = "";
+      document.getElementById("emailInput").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
 
   </div> <!-- End of Main Content -->
   </main>
 
-  <!-- Footer -->
-  <footer id="contact" class="bg-blue-600 text-white text-center py-6 mt-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-lg font-semibold">Need more help? Contact us</p>
-      <p>Email: support@studentportal.com | Phone: +123 456 7890</p>
-      <p>&copy; 2025 Student Portal. All rights reserved.</p>
-    </div>
-  </footer>
+  <?php
+  include "./landing/footer.php";
+  ?>
 
 </body>
 

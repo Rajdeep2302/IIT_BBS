@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Quizzes</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-blue-900 text-white p-5">
+            <h2 class="text-2xl font-bold mb-6">Faculty Portal</h2>
+            <ul>
+                <li class="mb-4">
+                    <a href="index.html" class="block py-2 px-3 rounded hover:bg-blue-700">Dashboard</a>
+                </li>
+                <li class="mb-4">
+                    <a href="assignments.html" class="block py-2 px-3 rounded hover:bg-blue-700">Assignments</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="block py-2 px-3 rounded bg-blue-700">Quizzes</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-9">
+            <h1 class="text-3xl font-semibold text-blue-900">Quiz Admin Panel</h1>
+
+            <!-- Create Quiz Section -->
+            <div class="mt-6 bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold">Create a Quiz</h2>
+                
+                <input id="quizTitle" type="text" class="mt-2 w-full p-2 border rounded" placeholder="Quiz Title" />
+                
+                <select id="department" class="mt-3 w-full p-2 border rounded">
+                    <option value="">Select Department</option>
+                    <option value="CSE">Computer Science</option>
+                    <option value="EEE">Electrical Engineering</option>
+                    <option value="ME">Mechanical Engineering</option>
+                </select>
+
+                <button onclick="addQuestion()" class="mt-3 bg-green-600 text-white px-4 py-2 rounded">
+                    Add Question
+                </button>
+
+                <div id="questionsContainer" class="mt-4 space-y-4"></div>
+
+                <button id="addMoreBtn" onclick="addQuestion()" class="mt-3 bg-green-600 text-white px-4 py-2 rounded hidden">
+                    Add More Question
+                </button>
+
+                <button onclick="saveQuiz()" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded">
+                    Save Quiz
+                </button>
+            </div>
+
+            <!-- List of Saved Quizzes -->
+            <div class="mt-6 bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold">Saved Quizzes</h2>
+                <ul id="quizList" class="mt-4 space-y-2"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadQuizzes);
+
+        function addQuestion() {
+            const container = document.getElementById("questionsContainer");
+            const index = container.children.length;
+
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("p-4", "border", "rounded", "bg-gray-100");
+
+            questionDiv.innerHTML = `
+                <input type="text" class="w-full p-2 border rounded" placeholder="Question" id="question${index}">
+                <input type="text" class="mt-2 w-full p-2 border rounded" placeholder="Option 1" id="option${index}_1">
+                <input type="text" class="mt-2 w-full p-2 border rounded" placeholder="Option 2" id="option${index}_2">
+                <input type="text" class="mt-2 w-full p-2 border rounded" placeholder="Option 3" id="option${index}_3">
+                <input type="text" class="mt-2 w-full p-2 border rounded" placeholder="Option 4" id="option${index}_4">
+                <input type="text" class="mt-2 w-full p-2 border rounded" placeholder="Correct Answer" id="answer${index}">
+            `;
+
+            container.appendChild(questionDiv);
+
+            // Show the "Add More" button if at least one question exists
+            document.getElementById("addMoreBtn").classList.remove("hidden");
+        }
+
+        function saveQuiz() {
+            let title = document.getElementById("quizTitle").value.trim();
+            let department = document.getElementById("department").value;
+
+            if (!title) {
+                alert("Please enter a quiz title.");
+                return;
+            }
+            if (!department) {
+                alert("Please select a department.");
+                return;
+            }
+
+            let questions = [];
+            const container = document.getElementById("questionsContainer");
+
+            if (container.children.length === 0) {
+                alert("Please add at least one question.");
+                return;
+            }
+
+            for (let i = 0; i < container.children.length; i++) {
+                let question = document.getElementById(`question${i}`).value.trim();
+                let options = [
+                    document.getElementById(`option${i}_1`).value.trim(),
+                    document.getElementById(`option${i}_2`).value.trim(),
+                    document.getElementById(`option${i}_3`).value.trim(),
+                    document.getElementById(`option${i}_4`).value.trim(),
+                ];
+                let answer = document.getElementById(`answer${i}`).value.trim();
+
+                if (!question || options.some(opt => opt === "") || !answer) {
+                    alert("Please fill all question fields.");
+                    return;
+                }
+
+                questions.push({ question, options, answer });
+            }
+
+            let quizzes = JSON.parse(localStorage.getItem("quizzes")) || [];
+            let quizId = quizzes.length + 1;
+            let quizLink = `quiz.html?id=${quizId}`;
+
+            quizzes.push({ id: quizId, title, department, questions, link: quizLink });
+            localStorage.setItem("quizzes", JSON.stringify(quizzes));
+
+            document.getElementById("quizTitle").value = "";
+            document.getElementById("department").value = "";
+            container.innerHTML = "";
+            document.getElementById("addMoreBtn").classList.add("hidden");
+
+            loadQuizzes();
+        }
+
+        function loadQuizzes() {
+            let quizzes = JSON.parse(localStorage.getItem("quizzes")) || [];
+            let quizList = document.getElementById("quizList");
+
+            quizList.innerHTML = quizzes.map(quiz => `
+                <li class="p-4 border rounded bg-gray-100 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold">${quiz.title} (${quiz.department})</h3>
+                        <a href="${quiz.link}" target="_blank" class="text-blue-500 underline">Take Quiz</a>
+                    </div>
+                </li>
+            `).join("");
+        }
+    </script>
+</body>
+</html>
